@@ -2,7 +2,7 @@ const UserModel = require("../models/UserModel");
 
 const createIfNotExist = async (user) => {
   const userFind = await UserModel.findOne({ userId: user.id });
-  console.log("-------------------------------------------------", userFind);
+  console.log("СУКА", userFind);
   try {
     if (userFind === null) {
       UserModel.create({

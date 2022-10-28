@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Telegraf, Scenes, Markup, session } = require("telegraf");
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf("5777519726:AAGtmIa9Gw4HBYok-YpqxTfogAyM8ZLaXLM");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -29,8 +29,9 @@ const { remove } = require("./models/UserModel");
 const { startMain } = require("./main-menu/mainManu");
 mongoose
   .connect(
-    "mongodb+srv://romannoris:Aa527465182@cluster0.pn7og9i.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://tataryn:Aa527465182@cluster0.pn7og9i.mongodb.net/noris?retryWrites=true&w=majority"
   )
+
   .then(() => console.log("DB is ok"))
   .catch((error) => console.log("Error", error));
 
@@ -46,6 +47,7 @@ bot.hears("ВИЙТИ !!!", (ctx) => {
 
 bot.start(async (ctx) => {
   const user = ctx.message.from;
+  console.log(user);
   createIfNotExist(user);
 
   await bot.telegram.sendPhoto(ctx.chat.id, {
