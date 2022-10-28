@@ -28,9 +28,7 @@ const masterScene = require("./scenes/master");
 const { remove } = require("./models/UserModel");
 const { startMain } = require("./main-menu/mainManu");
 mongoose
-  .connect(
-    "mongodb+srv://tataryn:Aa527465182@cluster0.pn7og9i.mongodb.net/beauty?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("DB is ok"))
   .catch((error) => console.log("Error", error));
 
@@ -63,7 +61,7 @@ bot.start(async (ctx) => {
       reply_markup: {
         keyboard: [
           [{ text: `✂ Я майстер` }, { text: `👩 Я клієнт` }],
-          [{ text: `Зв'язок з розробником` }],
+          [{ text: `🤖 Зв'язок з розробником` }],
         ],
         resize_keyboard: true,
       },
@@ -197,7 +195,7 @@ bot.command("/leaveScene", (ctx) => {
   });
 });
 
-bot.hears(`Зв'язок з розробником`, (ctx) => {
+bot.hears(`🤖 Зв'язок з розробником`, (ctx) => {
   ctx.reply(
     "Напишіть свої побажання, щодо покращення , чи розширення функціоналу 🖐️ ",
     Markup.inlineKeyboard([
