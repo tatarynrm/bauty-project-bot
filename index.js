@@ -28,7 +28,9 @@ const masterScene = require("./scenes/master");
 const { remove } = require("./models/UserModel");
 const { startMain } = require("./main-menu/mainManu");
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(
+    "mongodb+srv://romannoris:Aa527465182@cluster0.pn7og9i.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => console.log("DB is ok"))
   .catch((error) => console.log("Error", error));
 
